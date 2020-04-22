@@ -1,17 +1,16 @@
 package dev.michaelkimball.table.model;
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import io.quarkus.mongodb.panache.MongoEntity;
+import io.quarkus.mongodb.panache.PanacheMongoEntityBase;
+import org.bson.codecs.pojo.annotations.BsonId;
+
 import java.util.List;
 
-@Entity
-public class Table extends PanacheEntityBase {
-    @Id
+@MongoEntity
+public class Table extends PanacheMongoEntityBase {
+    @BsonId
     private String id;
     private String name;
-    @OneToMany(mappedBy = "table")
     private List<Item> items;
 
     public String getId() {

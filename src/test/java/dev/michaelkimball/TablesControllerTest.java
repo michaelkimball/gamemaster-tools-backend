@@ -14,8 +14,7 @@ public class TablesControllerTest {
         given()
           .when().get("/tables")
           .then()
-             .statusCode(200)
-             .body(is("hello"));
+             .statusCode(200);
     }
 
 }

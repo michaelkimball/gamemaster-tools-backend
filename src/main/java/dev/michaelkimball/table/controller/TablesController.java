@@ -1,6 +1,8 @@
 package dev.michaelkimball.table.controller;
 
-import dev.michaelkimball.table.model.Table;
+import dev.michaelkimball.table.model.TableDTO;
+import dev.michaelkimball.table.service.TableService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
@@ -10,27 +12,34 @@ import java.util.List;
 @RequestMapping("/tables")
 public class TablesController {
 
+    private final TableService tableService;
+
+    @Autowired
+    public TablesController(TableService tableService){
+        this.tableService = tableService;
+    }
+
     @GetMapping
-    public List<Table> getAllTables() {
-        return Table.listAll();
+    public List<TableDTO> getAllTables() {
+        return tableService.getAllTables();
     }
 
     @PostMapping()
     @Transactional
-    public void addTable(Table table) {
-        Table.persist(table);
+    public void addTable(TableDTO table) {
+        tableService.addTable(table);
     }
 
     @PutMapping("/{id}")
     @Transactional
-    public void updateTable(@PathVariable("id") String id, Table table){
-        Table.update(table);
+    public void updateTable(@PathVariable("id") String id, TableDTO table){
+        tableService.updateTable(id, table);
     }
 
     @DeleteMapping("/{id}")
     @Transactional
     public void deleteTable(@PathVariable("id") String id){
-        Table.delete("id", id);
+        tableService.deleteTable(id);
     }
 
 }

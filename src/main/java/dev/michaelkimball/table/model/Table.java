@@ -21,6 +21,11 @@ public class Table extends PanacheMongoEntityBase {
         this.id = id;
     }
 
+    public Table withId(String id) {
+        this.id = id;
+        return this;
+    }
+
     public String getName() {
         return name;
     }
@@ -29,11 +34,21 @@ public class Table extends PanacheMongoEntityBase {
         this.name = name;
     }
 
+    public Table withName(String name) {
+        this.name = name;
+        return this;
+    }
+
     public List<Item> getItems() {
         return items;
     }
 
     public void setItems(List<Item> items) {
         this.items = items;
+    }
+
+    public Table withItems(List<Item> items) {
+        this.items = items;
+        return this;
     }
 }

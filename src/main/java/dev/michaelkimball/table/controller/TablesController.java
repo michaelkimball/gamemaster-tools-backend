@@ -15,7 +15,7 @@ public class TablesController {
     private final TableService tableService;
 
     @Autowired
-    public TablesController(TableService tableService){
+    public TablesController(TableService tableService) {
         this.tableService = tableService;
     }
 

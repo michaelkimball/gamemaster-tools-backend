@@ -20,17 +20,18 @@ public class TableService {
         this.tableRepository = tableRepository;
     }
 
-    public List<TableDTO> getAllTables(){
+    public List<TableDTO> getAllTables() {
         return tableRepository.listAll()
                 .stream()
                 .map(TableTransformer::transform)
                 .collect(Collectors.toList());
     }
-    public void addTable(TableDTO newTable){
+
+    public void addTable(TableDTO newTable) {
         tableRepository.persist(TableTransformer.transform(newTable));
     }
 
-    public void updateTable(String id, TableDTO newTable){
+    public void updateTable(String id, TableDTO newTable) {
         Optional.ofNullable(tableRepository.findById(id))
                 .orElseThrow(() -> new TableCouldNotBeFoundError(id))
                 .withName(newTable.name)
@@ -38,7 +39,7 @@ public class TableService {
                 .update();
     }
 
-    public void deleteTable(String id){
+    public void deleteTable(String id) {
         Optional.ofNullable(tableRepository.findById(id))
                 .orElseThrow(() -> new TableCouldNotBeFoundError(id))
                 .delete();
@@ -46,6 +47,7 @@ public class TableService {
 
     private static class TableCouldNotBeFoundError extends RuntimeException {
         private static final String message = "Could not find table with id: %s";
+
         public TableCouldNotBeFoundError(String id) {
             super(String.format(TableCouldNotBeFoundError.message, id));
         }

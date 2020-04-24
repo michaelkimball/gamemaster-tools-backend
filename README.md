@@ -37,7 +37,11 @@ If you want to learn more about building native executables, please consult http
 
 ## Building and running using docker-compose
 
-You can run this application also using `docker-compose up`
+You can run this application with docker-compose for Mac and Linux 
+`docker-compose up`
+
+For Windows
+`docker-compose -f .windows/docker-compose.yml up`
 
 The build process uses a multi-stage build. The first stage uses a Linux instance with GraalVM to build a native Linux executable. The second stage is a much lighter Linux image which the application is copied and run on.
 

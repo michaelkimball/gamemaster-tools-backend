@@ -21,4 +21,13 @@ public class TableDTO {
         this.items = items;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "TableDTO{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", items=" + items +
+                '}';
+    }
 }

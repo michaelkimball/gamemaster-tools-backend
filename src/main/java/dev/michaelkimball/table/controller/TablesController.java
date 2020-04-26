@@ -1,12 +1,12 @@
 package dev.michaelkimball.table.controller;
 
 import dev.michaelkimball.table.model.TableDTO;
+import dev.michaelkimball.table.model.TableSearchResult;
 import dev.michaelkimball.table.service.TableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
-import java.util.List;
 
 @RestController
 @RequestMapping("/tables")
@@ -20,8 +20,8 @@ public class TablesController {
     }
 
     @GetMapping
-    public List<TableDTO> getAllTables() {
-        return tableService.getAllTables();
+    public TableSearchResult getAllTables(@RequestParam("page") int pageNumber, @RequestParam("name") String name) {
+        return tableService.getAllTables(pageNumber, name);
     }
 
     @PostMapping()

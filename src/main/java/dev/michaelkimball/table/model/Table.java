@@ -51,4 +51,13 @@ public class Table extends PanacheMongoEntityBase {
         this.items = items;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "Table{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", items=" + items +
+                '}';
+    }
 }

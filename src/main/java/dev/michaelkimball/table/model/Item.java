@@ -40,4 +40,24 @@ public class Item {
     public void setPosition(int position) {
         this.position = position;
     }
+
+    public Item withId(String id) {
+        this.id = id;
+        return this;
+    }
+
+    public Item withDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public Item withWeight(int weight) {
+        this.weight = weight;
+        return this;
+    }
+
+    public Item withPosition(int position) {
+        this.position = position;
+        return this;
+    }
 }
